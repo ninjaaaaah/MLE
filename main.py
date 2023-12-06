@@ -2,7 +2,7 @@ import streamlit as st
 import os
 from PIL import Image
 
-st.title('Dog Breed Classifier')
+st.title('📧 Letterbox')
 
 def save_uploaded_file(uploaded_file):
     try:
