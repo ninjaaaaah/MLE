@@ -14,14 +14,8 @@ labels = [
 def predict(array):
    array = np.array([array])
    prediction = model.predict(array)
-   index = np.argmax(prediction)
+   index = np.argmax(prediction, axis=1)[0]
    return labels[index]
-
-row = [[0.0]] * 28
-array = [row for i in range(28)]
-print(array)
-print(predict(array))
-
 
 default = """0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
@@ -54,9 +48,7 @@ default = """0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 
 array_string = st.text_area("Input some text here", default).strip()
 def click_button():
-   print(array_string)
    array = np.array([[[float(value)] for value in row.split(", ")] for row in array_string.split("\n")])
-   print(array)
    print(array)
    predicted_value = predict(array)
    st.write(f"Predicted Value: {predicted_value}")
